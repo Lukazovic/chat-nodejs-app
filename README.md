@@ -27,7 +27,11 @@ Socket.io: >= 2.3.0
 
 ### Screenshots
 
+Join Page
+
 ![Join Page](https://github.com/Lukazovic/chat-nodejs-app/blob/master/public/screenshots/Join-Page-node-chat-app-screenshot.png)
+
+Chat Page
 
 ![Chat Page](https://github.com/Lukazovic/chat-nodejs-app/blob/master/public/screenshots/Chat-Page-node-chat-app-Screenshot.png)
 
