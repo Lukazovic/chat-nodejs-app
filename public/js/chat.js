@@ -74,7 +74,7 @@ document.querySelector('#message-form').addEventListener('submit', e => {
     $messageFormButton.removeAttribute('disabled');
 
     if (error) {
-      return console.log(error);
+      return alert(error);
     }
 
     $messageFormInput.value = '';
