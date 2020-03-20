@@ -1,4 +1,4 @@
-# Real Time Chat Application
+# Real Time Chat Application :speech_balloon:
 
 A real time chat application built with NodeJS and Socket.io.
 
@@ -59,6 +59,11 @@ $ npm run dev
 
 Acess in: [localhost:3000](http://localhost:3000/)
 
-### Authors
+## Autor
 
-- [**Lucas Vieira**](https://github.com/Lukazovic)
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Lukazovic"><img src="https://avatars0.githubusercontent.com/u/54550926?s=460&u=cdeeac652ce0597a986fbdcff6e249ad27a1f1da&v=4" width="100px;" alt=""/><br /><sub><b>Lucas Vieira</b></sub></a><br /><a href="https://github.com/Lukazovic/chat-nodejs-app/" title="Code">💻</a></td>
+  <tr>
+</table>
+
