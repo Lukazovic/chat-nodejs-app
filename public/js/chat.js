@@ -21,17 +21,19 @@ const { username, room } = Qs.parse(location.search, {
 socket.on('sendMessage', message => {
   console.log(message);
   const html = Mustache.render(messageTemplate, {
+    username: message.username,
     message: message.text,
     createdAt: moment(message.createdAt).format('hh:mm A')
   });
   $messages.insertAdjacentHTML('beforeend', html);
 });
 
-socket.on('sendLocationMessage', location => {
+socket.on('sendLocationMessage', locationMessage => {
   console.log(location);
   const html = Mustache.render(locationMessageTemplate, {
-    locationURL: location.url,
-    createdAt: moment(location.createdAt).format('hh:mm A')
+    username: locationMessage.username,
+    locationURL: locationMessage.url,
+    createdAt: moment(locationMessage.createdAt).format('hh:mm A')
   });
   $messages.insertAdjacentHTML('beforeend', html);
 });
@@ -41,7 +43,7 @@ document.querySelector('#message-form').addEventListener('submit', e => {
 
   e.preventDefault();
   const inputMessage = e.target.elements.message.value;
-  socket.emit('newMessage', inputMessage, error => {
+  socket.emit('newMessage', { id: socket.id, message: inputMessage }, error => {
     $messageFormButton.removeAttribute('disabled');
 
     if (error) {
@@ -63,6 +65,7 @@ $sendLocationButton.addEventListener('click', () => {
   navigator.geolocation.getCurrentPosition(position => {
     socket.emit(
       'sendLocation',
+      socket.id,
       {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
