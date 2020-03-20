@@ -162,10 +162,13 @@ button:disabled {
   padding: 12px;
   margin: 0 16px 0 0;
   flex-grow: 1;
+  border-radius: 5px;
+  background-color: #ededf7;
 }
 
 .compose button {
   font-size: 14px;
+  border-radius: 5px;
 }
 
 /* Chat Sidebar Styles */
