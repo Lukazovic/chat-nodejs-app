@@ -21,7 +21,7 @@ const addUser = ({ id, username, room }) => {
   );
 
   if (existingUser) {
-    return { error: 'Username is already is use!' };
+    return { error: 'Username is already in use!' };
   }
 
   const user = { id, username, room };
