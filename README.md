@@ -2,7 +2,7 @@
 
 A real time chat application built with NodeJS and Socket.io.
 
-You can acess the chat in (https://node-realtime-chat-app.herokuapp.com/)[https://node-realtime-chat-app.herokuapp.com/]
+You can acess the chat in: [Node Real Time Chat Application](https://node-realtime-chat-app.herokuapp.com/)
 
 ### Built With
 
