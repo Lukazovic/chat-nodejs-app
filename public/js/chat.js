@@ -38,7 +38,6 @@ const autoscroll = () => {
 };
 
 socket.on('sendMessage', message => {
-  console.log(message);
   const html = Mustache.render(messageTemplate, {
     username: message.username,
     message: message.text,
@@ -57,7 +56,6 @@ socket.on('roomData', ({ room, users }) => {
 });
 
 socket.on('sendLocationMessage', locationMessage => {
-  console.log(location);
   const html = Mustache.render(locationMessageTemplate, {
     username: locationMessage.username,
     locationURL: locationMessage.url,
