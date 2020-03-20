@@ -35,34 +35,37 @@ io.on('connection', socket => {
 
     socket.join(user.room);
 
-    socket.emit('sendMessage', generateMessage(user.username, 'Welcome!'));
+    socket.emit('sendMessage', generateMessage('Admin', 'Welcome!'));
     socket.broadcast
       .to(user.room)
       .emit(
         'sendMessage',
-        generateMessage(user.username, `${user.username} has joined!`)
+        generateMessage('Admin', `${user.username} has joined!`)
       );
 
     callback();
   });
 
-  socket.on('newMessage', ({ id, message }, callback) => {
+  socket.on('newMessage', (message, callback) => {
+    const user = getUser(socket.id);
+
     const filter = new Filter();
 
     if (filter.isProfane(message)) {
       return callback('Profanity is not allowed');
     }
 
-    const user = getUser(id);
-
-    io.emit('sendMessage', generateMessage(user.username, message));
+    io.to(user.room).emit(
+      'sendMessage',
+      generateMessage(user.username, message)
+    );
     callback();
   });
 
-  socket.on('sendLocation', (id, coords, callback) => {
-    const user = getUser(id);
+  socket.on('sendLocation', (coords, callback) => {
+    const user = getUser(socket.id);
 
-    io.emit(
+    io.to(user.room).emit(
       'sendLocationMessage',
       generateLocationMessage(
         user.username,
@@ -78,7 +81,7 @@ io.on('connection', socket => {
     if (user) {
       io.to(user.room).emit(
         'sendMessage',
-        generateMessage(user.username, `${user.username} has left!`)
+        generateMessage('Admin', `${user.username} has left!`)
       );
     }
   });

@@ -43,7 +43,7 @@ document.querySelector('#message-form').addEventListener('submit', e => {
 
   e.preventDefault();
   const inputMessage = e.target.elements.message.value;
-  socket.emit('newMessage', { id: socket.id, message: inputMessage }, error => {
+  socket.emit('newMessage', inputMessage, error => {
     $messageFormButton.removeAttribute('disabled');
 
     if (error) {
@@ -65,7 +65,6 @@ $sendLocationButton.addEventListener('click', () => {
   navigator.geolocation.getCurrentPosition(position => {
     socket.emit(
       'sendLocation',
-      socket.id,
       {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude

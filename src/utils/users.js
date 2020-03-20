@@ -20,7 +20,7 @@ const addUser = ({ id, username, room }) => {
     user => user.room === room && user.username === username
   );
 
-  if (existingUser) {
+  if (existingUser || username === 'admin') {
     return { error: 'Username is already in use!' };
   }
 
