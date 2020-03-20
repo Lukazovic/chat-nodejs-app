@@ -59,7 +59,7 @@ $ npm run dev
 
 Acess in: [localhost:3000](http://localhost:3000/)
 
-## Autor
+## Author
 
 <table>
   <tr>
